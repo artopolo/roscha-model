@@ -13,11 +13,11 @@ body{display:flex;flex-direction:column;min-height:100vh;}
 .sticky{position:sticky;top:0;z-index:200;background:var(--bg);}
 header{padding:10px 20px 8px;border-bottom:1px solid var(--bord);display:flex;align-items:baseline;gap:10px;}
 header h1{font-family:'Bebas Neue',sans-serif;font-size:24px;letter-spacing:.06em;color:var(--acc);}
-header span{font-size:11px;color:var(--mute);letter-spacing:.16em;text-transform:uppercase;}
+header span{font-size:11px;color:var(--mute);letter-spacing:.14em;text-transform:uppercase;}
 .ctrl{background:var(--surf);border-bottom:1px solid var(--bord);padding:7px 20px;display:flex;flex-direction:column;gap:5px;}
 .crow{display:flex;align-items:center;gap:12px;}
-.slbl{font-family:'Bebas Neue',sans-serif;font-size:14px;letter-spacing:.09em;color:var(--acc);width:140px;flex-shrink:0;}
-.swrap{flex:1;max-width:600px;display:flex;align-items:center;gap:8px;}
+.slbl{font-family:'Bebas Neue',sans-serif;font-size:13px;letter-spacing:.08em;color:var(--acc);width:130px;flex-shrink:0;}
+.swrap{flex:1;display:flex;align-items:center;gap:8px;}
 .stk{font-size:11px;color:var(--mute);white-space:nowrap;flex-shrink:0;}
 input[type=range]{-webkit-appearance:none;appearance:none;flex:1;height:3px;cursor:pointer;outline:none;min-width:0;
   background:linear-gradient(to right,var(--acc) 0%,var(--acc) var(--p,50%),rgba(255,255,255,.07) var(--p,50%));
@@ -25,9 +25,12 @@ input[type=range]{-webkit-appearance:none;appearance:none;flex:1;height:3px;curs
 input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:24px;height:24px;border-radius:50%;
   background:var(--acc);border:2px solid var(--bg);box-shadow:0 0 8px rgba(201,169,110,.5);}
 input[type=range]::-moz-range-thumb{width:24px;height:24px;border-radius:50%;background:var(--acc);border:2px solid var(--bg);}
-.sval{font-family:'Bebas Neue',sans-serif;font-size:22px;color:var(--text);min-width:90px;text-align:right;white-space:nowrap;flex-shrink:0;}
-.page{padding:20px;display:flex;flex-direction:column;align-items:center;}
+.sval{font-family:'Bebas Neue',sans-serif;font-size:20px;color:var(--text);min-width:90px;text-align:right;white-space:nowrap;flex-shrink:0;}
+
+.page{padding:16px;display:flex;flex-direction:column;align-items:center;}
 .dw{width:100%;max-width:var(--maxw);display:flex;flex-direction:column;}
+
+/* Main area: ruler LEFT on desktop, hidden on mobile */
 .sk-area{display:flex;height:520px;border:1px solid var(--bord);border-bottom:none;}
 .ruler{width:50px;flex-shrink:0;border-right:1px solid var(--bord);background:var(--surf);display:flex;flex-direction:column;align-items:center;padding:8px 0 6px;}
 .rl-lbl{font-family:'Bebas Neue',sans-serif;font-size:8px;letter-spacing:.1em;color:var(--mute);writing-mode:vertical-rl;transform:rotate(180deg);margin-bottom:6px;}
@@ -39,6 +42,8 @@ input[type=range]::-moz-range-thumb{width:24px;height:24px;border-radius:50%;bac
 .rl-cur{position:absolute;left:18px;font-family:'Bebas Neue',sans-serif;font-size:10px;white-space:nowrap;pointer-events:none;transition:top .28s;}
 .sk-svg-wrap{flex:1;overflow:hidden;}
 svg.diag{display:block;width:100%;height:100%;}
+
+/* KPI */
 .kpi{display:flex;gap:1px;background:var(--bord);border:1px solid var(--bord);}
 .kc{flex:1;min-width:0;padding:7px 10px;background:var(--surf);position:relative;}
 .kc::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;}
@@ -47,12 +52,33 @@ svg.diag{display:block;width:100%;height:100%;}
 .kl{font-size:9px;letter-spacing:.13em;text-transform:uppercase;color:var(--mute);margin-bottom:1px;white-space:nowrap;overflow:hidden;}
 .kv{font-family:'Bebas Neue',sans-serif;font-size:19px;color:var(--text);white-space:nowrap;}
 .ks{font-size:9px;color:var(--mute);}
+
+/* Mobile horizontal profit bar (shown only on mobile) */
+.profit-bar{display:none;border:1px solid var(--bord);border-top:none;background:var(--surf);padding:6px 14px;align-items:center;gap:10px;}
+.pb-lbl{font-family:'Bebas Neue',sans-serif;font-size:12px;letter-spacing:.08em;color:var(--mute);white-space:nowrap;}
+.pb-track{flex:1;height:6px;background:rgba(255,255,255,.06);border-radius:3px;position:relative;overflow:hidden;}
+.pb-fill{position:absolute;top:0;left:0;height:100%;border-radius:3px;transition:width .28s,background .28s;}
+.pb-val{font-family:'Bebas Neue',sans-serif;font-size:14px;white-space:nowrap;}
+
+/* Payback */
 .pb-ctrls{background:var(--surf);border:1px solid var(--bord);border-top:none;border-bottom:none;padding:8px 16px;display:flex;flex-direction:column;gap:5px;margin-top:16px;}
 .pb-area{height:220px;border:1px solid var(--bord);}
 svg#pb{display:block;width:100%;height:100%;}
-footer{margin-top:32px;padding:14px 20px;text-align:center;border-top:1px solid var(--bord);font-size:11px;color:var(--mute);}
+footer{margin-top:28px;padding:12px 20px;text-align:center;border-top:1px solid var(--bord);font-size:11px;color:var(--mute);}
 footer a{color:var(--acc);text-decoration:none;}
-@media(max-width:640px){.sk-area{height:460px;}.pb-area{height:180px;}.kpi{flex-wrap:wrap;}.kc{min-width:45%;}.slbl{width:100px;font-size:12px;}.sval{font-size:18px;min-width:64px;}}
+
+@media(max-width:600px){
+  .sk-area{height:460px;}
+  .ruler{display:none;}  /* hide left ruler on mobile */
+  .profit-bar{display:flex;}  /* show horizontal profit bar */
+  .pb-area{height:180px;}
+  .kpi{flex-wrap:wrap;}
+  .kc{min-width:45%;}
+  .slbl{width:110px;font-size:12px;}
+  .sval{font-size:17px;min-width:72px;}
+  header h1{font-size:20px;}
+  header span{font-size:10px;}
+}
 </style>
 </head>
 <body>
@@ -63,18 +89,32 @@ footer a{color:var(--acc);text-decoration:none;}
     <div class="crow"><div class="slbl">Стоимость аренды</div><div class="swrap"><span class="stk">20К ₽</span><input type="range" id="sl-e" min="20000" max="60000" value="35000" step="1000"><span class="stk">60К ₽</span></div><div class="sval" id="v-e">35 000 ₽</div></div>
   </div>
 </div>
+
 <div class="page"><div class="dw">
   <div class="sk-area">
-    <div class="ruler"><div class="rl-lbl">Прибыль</div><div class="rl-track" id="rt"><div class="rl-zero" id="rz"></div><div class="rl-fill pos" id="rf"></div><div class="rl-cur" id="rc">—</div></div></div>
+    <!-- Desktop ruler (hidden on mobile) -->
+    <div class="ruler">
+      <div class="rl-lbl">Прибыль</div>
+      <div class="rl-track" id="rt"><div class="rl-zero" id="rz"></div><div class="rl-fill pos" id="rf"></div><div class="rl-cur" id="rc">—</div></div>
+    </div>
     <div class="sk-svg-wrap"><svg class="diag" id="sk" xmlns="http://www.w3.org/2000/svg"></svg></div>
   </div>
+
+  <!-- Mobile horizontal profit bar -->
+  <div class="profit-bar" id="profit-bar">
+    <div class="pb-lbl">Прибыль</div>
+    <div class="pb-track"><div class="pb-fill" id="pb-fill"></div></div>
+    <div class="pb-val" id="pb-val">—</div>
+  </div>
+
   <div class="kpi">
     <div class="kc kb"><div class="kl">Выручка</div><div class="kv" id="k0">—</div><div class="ks">аренда бань</div></div>
     <div class="kc kr"><div class="kl">Расходы</div><div class="kv" id="k1">—</div><div class="ks">пост+перем+налоги</div></div>
     <div class="kc kg"><div class="kl">Чистая прибыль</div><div class="kv" id="k2">—</div><div class="ks">после налогов</div></div>
-    <div class="kc ko"><div class="kl">Бань в месяц</div><div class="kv" id="k3">—</div><div class="ks" id="k3s">из 90 макс</div></div>
+    <div class="kc ko"><div class="kl">Бань в месяц</div><div class="kv" id="k3">—</div><div class="ks">из 90 макс</div></div>
     <div class="kc km"><div class="kl">Рентабельность</div><div class="kv" id="k5">—</div><div class="ks">чист/выручка</div></div>
   </div>
+
   <div class="pb-ctrls">
     <div class="crow"><div class="slbl">₽ / м²</div><div class="swrap"><span class="stk">100К</span><input type="range" id="sl-p" min="100000" max="500000" value="250000" step="10000"><span class="stk">500К</span></div><div class="sval" id="v-p">250 К</div></div>
     <div class="crow"><div class="slbl">Площадь</div><div class="swrap"><span class="stk">50 м²</span><input type="range" id="sl-s" min="50" max="250" value="120" step="5"><span class="stk">250 м²</span></div><div class="sval" id="v-s">120 м²</div></div>
@@ -85,130 +125,159 @@ footer a{color:var(--acc);text-decoration:none;}
 <footer>Сайт сделан <a href="https://artopolo.com" target="_blank">artopolo.com</a></footer>
 
 <script>
-// ═══ MODEL: Баня возле рощи ═══
-// 100% = 90 бань/мес (3 бани/день × 30 дней)
-// Доход = бани × цена_аренды (линейно)
 const MAX_BATHS=90;
-// Постоянные расходы (не зависят от загрузки)
-const FIX_PERSON=190000; // Админ 80К + Техник 60К + Уборщица 50К
-const FIX_PROCHIE=92000; // Электр 15К + Вода 10К + Расходники 25К + ПО 2К + Ремонт 20К + Клининг 10К + Банк.услуги 10К
-const TOTAL_FIXED=FIX_PERSON+FIX_PROCHIE; // 282,000
-// Переменные за баню
-const PER_BATH=3200; // Прачка 600 + Дрова 1000 + Хозка 500 + Веники 400 + Еда 500 + Гигиена 200
+const FIX_PERSON=190000,FIX_PROCHIE=92000,TOTAL_FIXED=282000,PER_BATH=3200;
 
-function mdl(lp,rentP){
-  const p=lp/100, baths=Math.round(MAX_BATHS*p);
-  const rv=baths*rentP;
-  const banking=rv*0.01; // банкинг 1% от выручки
-  const materials=baths*PER_BATH;
-  const tvo=banking+materials;
-  const tf=TOTAL_FIXED;
-  const totalExp=tf+tvo;
-  const tfot=FIX_PERSON*0.43; // 43% от зарплаты (30% страховые + 13% НДФЛ)
-  const op=rv-totalExp;
-  const pbt=op-tfot;
-  const ti=pbt>0?pbt*0.25:0;
-  const net=pbt-ti;
-  const taxes=tfot+ti;
-  return{p,baths,rv,tf,FIX_PERSON,FIX_PROCHIE,banking,materials,tvo,tfot,ti,taxes,op,pbt,net};
+function mdl(lp,rp){
+  const p=lp/100,baths=Math.round(MAX_BATHS*p),rv=baths*rp;
+  const banking=rv*0.01,materials=baths*PER_BATH,tvo=banking+materials;
+  const tfot=FIX_PERSON*0.43,op=rv-TOTAL_FIXED-tvo,pbt=op-tfot;
+  const ti=pbt>0?pbt*0.25:0,net=pbt-ti,taxes=tfot+ti;
+  return{p,baths,rv,tf:TOTAL_FIXED,FIX_PERSON,FIX_PROCHIE,banking,materials,tvo,tfot,ti,taxes,op,pbt,net};
 }
-
 function fM(n){if(!isFinite(n))return'0 ₽';const s=n<0?'−':'';n=Math.abs(n);if(n>=1e6)return s+(n/1e6).toFixed(1).replace('.',',')+' М ₽';if(n>=1e3)return s+Math.round(n/1e3)+' К ₽';return s+Math.round(n)+' ₽';}
 function fS(n){if(!isFinite(n))return'0';const s=n<0?'−':'';n=Math.abs(n);if(n>=1e6)return s+(n/1e6).toFixed(1).replace('.',',')+'М';if(n>=1e3)return s+Math.round(n/1e3)+'К';return s+Math.round(n)+'';}
 function pc(v,t){return t>0?((v/t)*100).toFixed(1)+'%':'—';}
 function qToYM(q){const mo=Math.round(q*3),y=Math.floor(mo/12),m=mo%12;if(y===0)return m+' мес';if(m===0)return y+(y===1?' год':y<5?' года':' лет');return y+'л '+m+'м';}
+
 const NS='http://www.w3.org/2000/svg';
 function mk(t,a,p){const e=document.createElementNS(NS,t);for(const[k,v]of Object.entries(a))e.setAttribute(k,v);if(p)p.appendChild(e);return e;}
+
+// Band — full width (no squeeze)
 function band(g,x1,t1,b1,x2,t2,b2,col,op){
   if(b1-t1<0.3||b2-t2<0.3)return;
   const cp=(x2-x1)*0.22;
   const d=`M${x1},${t1}C${x1+cp},${t1} ${x2-cp},${t2} ${x2},${t2}L${x2},${b2}C${x2-cp},${b2} ${x1+cp},${b1} ${x1},${b1}Z`;
   mk('path',{d,fill:col,opacity:String(op)},g);
 }
-function box(g,x,y,w,h,col){if(h<0.5)return;mk('rect',{x,y,width:w,height:Math.max(h,3),fill:col,rx:3},g);}
-function lblSide(g,bx,by,bw,bh,title,money,pct_str,side){
-  if(bh<2)return;
-  const midY=by+Math.max(bh,3)/2,tc='#ccc8be',mc='#e4dfd4',pc_c='#888';
-  if(side==='right'){
-    const x=bx+bw+6;
-    mk('text',{x,y:midY-6,'text-anchor':'start','font-family':'Jost,sans-serif','font-size':12,fill:tc,'font-weight':'500'},g).textContent=title;
-    const s=mk('text',{x,y:midY+9,'text-anchor':'start','font-family':'Jost,sans-serif','font-size':11},g);
+function box(g,x,y,w,h,col){if(h<0.5)return;mk('rect',{x,y,width:w,height:Math.max(h,4),fill:col,rx:3},g);}
+
+let _clipIdx=0, _gDefs=null;
+
+// Text INSIDE buffer (clipped). 2 lines if height >= 28, else 1 line.
+function lblIn(gT,x,y,w,h,title,money,pct){
+  if(h<10)return;
+  const id='cl'+(++_clipIdx);
+  const cp=mk('clipPath',{id},_gDefs);
+  mk('rect',{x,y,width:w,height:Math.max(h,4)},cp);
+  const g=mk('g',{'clip-path':`url(#${id})`},gT);
+  const cx=x+w/2,isW=false;
+  const tc='rgba(255,255,255,0.92)',mc='#fff',pc_c='rgba(255,255,255,0.65)';
+  if(h>=32){
+    mk('text',{x:cx,y:y+13,'text-anchor':'middle','font-family':'Jost,sans-serif','font-size':11,fill:tc,'font-weight':'500'},g).textContent=title;
+    const s=mk('text',{x:cx,y:y+26,'text-anchor':'middle','font-family':'Jost,sans-serif','font-size':11},g);
     mk('tspan',{'font-weight':'700',fill:mc},s).textContent=money;
-    if(pct_str)mk('tspan',{'font-weight':'400',fill:pc_c},s).textContent=' · '+pct_str;
-  }else if(side==='left'){
-    const x=bx-6;
-    mk('text',{x,y:midY-6,'text-anchor':'end','font-family':'Jost,sans-serif','font-size':12,fill:tc,'font-weight':'500'},g).textContent=title;
-    const s=mk('text',{x,y:midY+9,'text-anchor':'end','font-family':'Jost,sans-serif','font-size':11},g);
+    if(pct)mk('tspan',{'font-weight':'400',fill:pc_c},s).textContent=' '+pct;
+  }else if(h>=18){
+    const s=mk('text',{x:cx,y:y+h/2+4,'text-anchor':'middle','font-family':'Jost,sans-serif','font-size':10},g);
     mk('tspan',{'font-weight':'700',fill:mc},s).textContent=money;
-    if(pct_str)mk('tspan',{'font-weight':'400',fill:pc_c},s).textContent=' · '+pct_str;
-  }else{
-    const cx=bx+bw/2;
-    mk('text',{x:cx,y:by-16,'text-anchor':'middle','font-family':'Jost,sans-serif','font-size':13,fill:tc,'font-weight':'500'},g).textContent=title;
-    const s=mk('text',{x:cx,y:by-2,'text-anchor':'middle','font-family':'Jost,sans-serif','font-size':12},g);
-    mk('tspan',{'font-weight':'700',fill:mc},s).textContent=money;
-    if(pct_str)mk('tspan',{'font-weight':'400',fill:pc_c},s).textContent=' · '+pct_str;
+    if(pct)mk('tspan',{'font-weight':'400',fill:pc_c},s).textContent=' '+pct;
+  }else if(h>=10){
+    mk('text',{x:cx,y:y+h/2+3,'text-anchor':'middle','font-family':'Jost,sans-serif','font-size':9,fill:mc,'font-weight':'700'},g).textContent=money;
   }
 }
 
-function renderSankey(lp,rentP){
-  const m=mdl(lp,rentP);
+// Text BESIDE buffer (desktop)
+function lblSide(gT,bx,by,bw,bh,title,money,pct,side){
+  if(bh<2)return;
+  const midY=by+Math.max(bh,4)/2,tc='#ccc8be',mc='#e4dfd4',pc_c='#888';
+  if(side==='right'){
+    const x=bx+bw+7;
+    mk('text',{x,y:midY-6,'text-anchor':'start','font-family':'Jost,sans-serif','font-size':12,fill:tc,'font-weight':'500'},gT).textContent=title;
+    const s=mk('text',{x,y:midY+8,'text-anchor':'start','font-family':'Jost,sans-serif','font-size':11},gT);
+    mk('tspan',{'font-weight':'700',fill:mc},s).textContent=money;
+    if(pct)mk('tspan',{'font-weight':'400',fill:pc_c},s).textContent=' · '+pct;
+  }else if(side==='left'){
+    const x=bx-7;
+    mk('text',{x,y:midY-6,'text-anchor':'end','font-family':'Jost,sans-serif','font-size':12,fill:tc,'font-weight':'500'},gT).textContent=title;
+    const s=mk('text',{x,y:midY+8,'text-anchor':'end','font-family':'Jost,sans-serif','font-size':11},gT);
+    mk('tspan',{'font-weight':'700',fill:mc},s).textContent=money;
+    if(pct)mk('tspan',{'font-weight':'400',fill:pc_c},s).textContent=' · '+pct;
+  }else{
+    const cx=bx+bw/2;
+    mk('text',{x:cx,y:by-16,'text-anchor':'middle','font-family':'Jost,sans-serif','font-size':13,fill:tc,'font-weight':'500'},gT).textContent=title;
+    const s=mk('text',{x:cx,y:by-2,'text-anchor':'middle','font-family':'Jost,sans-serif','font-size':12},gT);
+    mk('tspan',{'font-weight':'700',fill:mc},s).textContent=money;
+    if(pct)mk('tspan',{'font-weight':'400',fill:pc_c},s).textContent=' · '+pct;
+  }
+}
+
+function renderSankey(lp,rp){
+  const m=mdl(lp,rp);
   const{rv,tf,FIX_PERSON:fp,FIX_PROCHIE:fpr,banking,materials,tvo,tfot,ti,taxes,net}=m;
-  const svg=document.getElementById('sk');svg.innerHTML='';
-  const R=svg.getBoundingClientRect(),W=Math.max(R.width,280),H=Math.max(R.height,280);
+  const svg=document.getElementById('sk');svg.innerHTML='';_clipIdx=0;
+  const R=svg.getBoundingClientRect(),W=Math.max(R.width,200),H=Math.max(R.height,200);
   svg.setAttribute('viewBox',`0 0 ${W} ${H}`);
+  _gDefs=mk('defs',{},svg);
   const gF=mk('g',{},svg),gN=mk('g',{},svg),gT=mk('g',{},svg);
-  const NW=Math.max(Math.round(W*0.07),48);
-  const MIN_ITEM=28,GG=10,IG=4;
+
+  const mobile=W<480;
+  // On mobile: text inside buffers, tight margins
+  // On desktop: text beside/above buffers, generous margins
+  const NW = mobile ? Math.max(Math.round(W*0.14),52) : Math.max(Math.round(W*0.07),48);
+  const HP_L = mobile ? 12 : Math.max(90,Math.round(W*0.12));
+  const HP_R = mobile ? 12 : Math.max(110,Math.round(W*0.14));
+  const GG=10,IG=4,MIN_ITEM=mobile?20:28;
   const TOP=6,BOT=6,USE=H-TOP-BOT;
-  const HP_L=Math.max(90,Math.round(W*0.12)),HP_R=Math.max(110,Math.round(W*0.14));
-  const inner=W-HP_L-HP_R-NW;
-  function cx(i){return Math.round(HP_L+i*inner/3);}
+  const inner=W-HP_L-HP_R-NW,step=inner/3;
+  function cx(i){return Math.round(HP_L+i*step);}
   const C={ii:cx(0),rv:cx(1),gr:cx(2),it:cx(3)};
-  // Revenue = single income stream (Аренда бань)
-  const REF=MAX_BATHS*60000; // max possible revenue (90 × 60000)
+
+  const REF=MAX_BATHS*60000;
   const scale=USE/REF;
   function H$(v){return v>0?Math.max(v*scale,3):0;}
+
   const rvH=H$(rv),rvY=TOP+(USE-rvH)/2,rvM=rvY+rvH/2;
+
+  // Revenue (white)
   box(gN,C.rv,rvY,NW,rvH,'#ffffff');
-  lblSide(gT,C.rv,rvY,NW,rvH,'ВЫРУЧКА',fS(rv),'100%','above');
-  if(rv===0){box(gN,C.gr,TOP+(USE-H$(tf))/2,NW,H$(tf),'#7b241c');return;}
-  // Left: single income source
+  if(mobile) lblIn(gT,C.rv,rvY,NW,rvH,'ВЫРУЧКА',fS(rv),null);
+  else lblSide(gT,C.rv,rvY,NW,rvH,'ВЫРУЧКА',fS(rv),'100%','above');
+
+  if(rv===0)return;
+
+  // Left: single income (Аренда бань)
   const iH=Math.max(H$(rv),MIN_ITEM);
   box(gN,C.ii,rvM-iH/2,NW,iH,'#3a7bd5');
-  lblSide(gT,C.ii,rvM-iH/2,NW,iH,'Аренда бань',fS(rv),m.baths+' бань','left');
+  if(mobile) lblIn(gT,C.ii,rvM-iH/2,NW,iH,'Аренда',fS(rv),null);
+  else lblSide(gT,C.ii,rvM-iH/2,NW,iH,'Аренда бань',fS(rv),m.baths+' бань','left');
   band(gF,C.ii+NW,rvM-iH/2,rvM+iH/2,C.rv,rvY,rvY+rvH,'#3a7bd5',0.28);
-  // Right: 4 groups (Прибыль, Постоянные, Переменные, Налоги)
+
+  // Right: 4 groups
   const nd=Math.max(net,0);
   const grpDefs=[
-    {lbl:'Чист. прибыль',v:nd,col:'#1a6b3a'},
-    {lbl:'Постоянные',v:tf,col:'#7b241c'},
-    {lbl:'Переменные',v:tvo,col:'#a93226'},
-    {lbl:'Налоги',v:taxes,col:'#d35400'},
-  ];
-  const grps=grpDefs.filter(g=>g.v>0);
-  const grpH=grps.map(g=>H$(g.v));
-  const grpTotal=grpH.reduce((a,b)=>a+b,0)+(grps.length-1)*GG;
+    {lbl:'Чист. прибыль',short:'Прибыль',v:nd,col:'#1a6b3a'},
+    {lbl:'Постоянные',short:'Пост.',v:tf,col:'#7b241c'},
+    {lbl:'Переменные',short:'Перем.',v:tvo,col:'#a93226'},
+    {lbl:'Налоги',short:'Налоги',v:taxes,col:'#d35400'},
+  ].filter(g=>g.v>0);
+
+  const grpH=grpDefs.map(g=>H$(g.v));
+  const grpTotal=grpH.reduce((a,b)=>a+b,0)+(grpDefs.length-1)*GG;
   let gy=rvM-grpTotal/2;
-  const partsSum=grps.reduce((a,g)=>a+g.v,0);
+  const partsSum=grpDefs.reduce((a,g)=>a+g.v,0);
   let slY=rvY;
   const grpPos=[];
-  grps.forEach((g,i)=>{
+  grpDefs.forEach((g,i)=>{
     const h=grpH[i];
-    grpPos.push({t:gy,h,b:gy+h});
+    grpPos.push({t:gy,h,b:gy+h,lbl:g.lbl});
     box(gN,C.gr,gy,NW,h,g.col);
-    lblSide(gT,C.gr,gy,NW,h,g.lbl,fS(g.v),pc(g.v,rv),'above');
+    if(mobile) lblIn(gT,C.gr,gy,NW,h,g.short,fS(g.v),null);
+    else lblSide(gT,C.gr,gy,NW,h,g.lbl,fS(g.v),pc(g.v,rv),'above');
     const slH=partsSum>0?g.v/partsSum*rvH:0;
     band(gF,C.rv+NW,slY,slY+slH,C.gr,gy,gy+h,g.col,0.28);
     slY+=slH;gy+=h+GG;
   });
-  // Sub-items for groups that have them
+
+  // Sub-items
   const subDefs={
+    'Чист. прибыль': null,
     'Постоянные':[{lbl:'Персонал',v:fp,col:'#6e1f17'},{lbl:'Прочие расходы',v:fpr,col:'#922b21'}],
     'Переменные':[{lbl:'Банкинг 1%',v:banking,col:'#7b241c'},{lbl:'Материалы',v:materials,col:'#a93226'}],
-    'Налоги':[{lbl:'Налог ФОТ 43%',v:tfot,col:'#d35400'},{lbl:'Налог прибыль',v:ti,col:'#e67e22'}],
+    'Налоги':[{lbl:'Налог ФОТ 43%',v:tfot,col:'#d35400'},{lbl:'Налог прибыль',v:ti>0?ti:0,col:'#e67e22'}],
   };
   let allItems=[];
-  grps.forEach((g,i)=>{
+  grpDefs.forEach((g,i)=>{
     const subs=subDefs[g.lbl];
     if(!subs)return;
     subs.forEach(s=>{if(s.v>0)allItems.push({...s,grpIdx:i,grpLbl:g.lbl});});
@@ -221,22 +290,24 @@ function renderSankey(lp,rentP){
   if(iy<TOP)iy=TOP;if(iy+itemTotal>TOP+USE)iy=TOP+USE-itemTotal;
   allItems.forEach((it,j)=>{
     const h=itemH[j];
-    const gIdx=grps.findIndex(g=>g.lbl===it.grpLbl);
+    const gIdx=grpDefs.findIndex(g=>g.lbl===it.grpLbl);
     const gp=grpPos[gIdx];
     const grpSubs=subDefs[it.grpLbl].filter(s=>s.v>0);
     const sumGV=grpSubs.reduce((a,s)=>a+s.v,0);
     const wIdx=grpSubs.findIndex(s=>s.lbl===it.lbl);
     let srcT=gp.t;
-    for(let k=0;k<wIdx;k++){srcT+=grpSubs[k].v/sumGV*gp.h;}
+    for(let k=0;k<wIdx;k++)srcT+=grpSubs[k].v/sumGV*gp.h;
     const srcH=it.v/sumGV*gp.h;
     box(gN,C.it,iy,NW,h,it.col);
-    lblSide(gT,C.it,iy,NW,h,it.lbl,fS(it.v),pc(it.v,rv),'right');
+    if(mobile) lblIn(gT,C.it,iy,NW,h,it.lbl,fS(it.v),null);
+    else lblSide(gT,C.it,iy,NW,h,it.lbl,fS(it.v),pc(it.v,rv),'right');
     band(gF,C.gr+NW,srcT,srcT+srcH,C.it,iy,iy+h,it.col,0.30);
     iy+=h+IG;
     if(j<allItems.length-1&&allItems[j+1].grpIdx!==it.grpIdx)iy+=(GG-IG);
   });
 }
 
+// Ruler (desktop)
 let MN,MiN,RR;
 function recalcRuler(rp){MN=mdl(100,rp).net;MiN=mdl(0,rp).net;RR=MN-MiN||1;}
 function updateRuler(lp,rp){
@@ -246,25 +317,28 @@ function updateRuler(lp,rp){
   if(net>=0){const fH=net/RR*tH;rf.style.height=fH+'px';rf.style.bottom=(bF*tH)+'px';rf.style.top='auto';rf.className='rl-fill pos';ly=zy-fH-2;rc.style.color='#27ae60';}
   else{const fH=Math.abs(net)/RR*tH;rf.style.height=fH+'px';rf.style.top=zy+'px';rf.style.bottom='auto';rf.className='rl-fill neg';ly=zy+fH-14;rc.style.color='#e74c3c';}
   rc.style.top=Math.max(2,Math.min(ly,tH-16))+'px';rc.textContent=(net>=0?'+':'')+fS(net);
+  // Mobile horizontal bar
+  const pf=document.getElementById('pb-fill'),pv=document.getElementById('pb-val');
+  if(pf){const pct=Math.max(0,Math.min(100,(net-MiN)/RR*100));pf.style.width=pct+'%';pf.style.background=net>=0?'#27ae60':'#c0392b';}
+  if(pv){pv.textContent=(net>=0?'+':'')+fS(net);pv.style.color=net>=0?'#27ae60':'#e74c3c';}
 }
 function renderPayback(lp,rp,pr,sq,mo){
   const invest=pr*sq,{net}=mdl(lp,rp),qNet=net*mo/4,Q=40;
   const svg=document.getElementById('pb');svg.innerHTML='';
   const R=svg.getBoundingClientRect(),W=Math.max(R.width,280),H=Math.max(R.height,160);
   svg.setAttribute('viewBox',`0 0 ${W} ${H}`);
-  const P={t:38,b:28,l:80,r:20},PW=W-P.l-P.r,PH=H-P.t-P.b;
+  const P={t:38,b:28,l:70,r:16},PW=W-P.l-P.r,PH=H-P.t-P.b;
   const pts=[];for(let q=0;q<=Q;q++)pts.push(-invest+qNet*q);
   let bQ=null;for(let q=1;q<=Q;q++)if(pts[q]>=0&&bQ===null)bQ=q;
   const mn=Math.min(...pts),mx=Math.max(...pts,0),rng=mx-mn||1;
   function xP(q){return P.l+(q/Q)*PW;}function yP(v){return P.t+PH-((v-mn)/rng)*PH;}
   mk('rect',{x:0,y:0,width:W,height:H,fill:'#0d0d0c'},svg);
-  const sN=mo<12?` · сезон ${mo} мес/год`:'';
-  const tit=invest===0?'Укажите площадь и стоимость м²':bQ!==null?`Строительство: ${fM(invest)}${sN}  ·  Окупаемость: ${qToYM(bQ)}`:`Строительство: ${fM(invest)}${sN}  ·  Не окупается за 10 лет`;
-  mk('text',{x:P.l,y:25,'font-family':'Jost,sans-serif','font-size':14,fill:'#aaa8a4'},svg).textContent=tit;
-  if(invest===0){mk('text',{x:W/2,y:H/2+6,'text-anchor':'middle','font-family':'Jost,sans-serif','font-size':15,fill:'#5a5750'},svg).textContent='Площадь = 0 м²';return;}
+  const sN=mo<12?` · ${mo} мес/год`:'';
+  const tit=invest===0?'Укажите площадь и стоимость м²':bQ!==null?`Стр-во: ${fM(invest)}${sN}  ·  Окупаемость: ${qToYM(bQ)}`:`Стр-во: ${fM(invest)}${sN}  ·  Не окупается за 10 лет`;
+  mk('text',{x:P.l,y:25,'font-family':'Jost,sans-serif','font-size':13,fill:'#aaa8a4'},svg).textContent=tit;
+  if(invest===0){mk('text',{x:W/2,y:H/2+6,'text-anchor':'middle','font-family':'Jost,sans-serif','font-size':14,fill:'#5a5750'},svg).textContent='Площадь = 50–250 м²';return;}
   const zy=yP(0);
   mk('line',{x1:P.l,y1:zy,x2:P.l+PW,y2:zy,stroke:'rgba(255,255,255,0.15)','stroke-width':'1','stroke-dasharray':'5,4'},svg);
-  mk('text',{x:P.l-8,y:zy+4,'text-anchor':'end','font-family':'Bebas Neue,sans-serif','font-size':12,fill:'#555'},svg).textContent='0';
   const segs=[];let i=0;
   while(i<=Q){const neg=pts[i]<0,seg={neg,pts:[[i,pts[i]]]};i++;while(i<=Q&&(pts[i]<0)===neg){seg.pts.push([i,pts[i]]);i++;}if(i<=Q){const p0=pts[i-1],p1=pts[i],fr=Math.abs(p0)/(Math.abs(p0)+Math.abs(p1));seg.pts.push([i-1+fr,0]);}segs.push(seg);}
   segs.forEach(seg=>{
@@ -274,9 +348,9 @@ function renderPayback(lp,rp,pr,sq,mo){
     let dL=`M${xP(seg.pts[0][0])},${yP(seg.pts[0][1])}`;seg.pts.forEach(([q,v],j)=>{if(j>0)dL+=`L${xP(q)},${yP(v)}`;});
     mk('path',{d:dL,fill:'none',stroke:col,'stroke-width':'2.5'},svg);
   });
-  if(bQ!==null&&bQ<=Q){const bx=xP(bQ);mk('line',{x1:bx,y1:P.t,x2:bx,y2:P.t+PH,stroke:'rgba(255,255,255,0.25)','stroke-width':'1','stroke-dasharray':'3,3'},svg);mk('circle',{cx:bx,cy:zy,r:6,fill:'#27ae60',stroke:'#0d0d0c','stroke-width':'2'},svg);const lx=bQ>Q/2?bx-12:bx+12,anch=bQ>Q/2?'end':'start';mk('text',{x:lx,y:zy-14,'text-anchor':anch,'font-family':'Bebas Neue,sans-serif','font-size':16,fill:'#27ae60'},svg).textContent=qToYM(bQ);}
-  for(let yr=0;yr<=10;yr++){const q=yr*4,x=xP(q);mk('line',{x1:x,y1:P.t+PH,x2:x,y2:P.t+PH+4,stroke:'rgba(255,255,255,0.1)','stroke-width':'1'},svg);mk('text',{x,y:H-4,'text-anchor':'middle','font-family':'Jost,sans-serif','font-size':11,fill:'#5a5750'},svg).textContent=yr===0?'Старт':`${yr}л`;}
-  [[mn],[mx]].forEach(([v])=>{if(!isFinite(v)||Math.abs(v)<100)return;mk('text',{x:P.l-8,y:yP(v)+4,'text-anchor':'end','font-family':'Bebas Neue,sans-serif','font-size':12,fill:v>=0?'#27ae60':'#c0392b'},svg).textContent=fS(v);});
+  if(bQ!==null&&bQ<=Q){const bx=xP(bQ);mk('circle',{cx:bx,cy:zy,r:5,fill:'#27ae60',stroke:'#0d0d0c','stroke-width':'2'},svg);const lx=bQ>Q/2?bx-10:bx+10,anch=bQ>Q/2?'end':'start';mk('text',{x:lx,y:zy-12,'text-anchor':anch,'font-family':'Bebas Neue,sans-serif','font-size':15,fill:'#27ae60'},svg).textContent=qToYM(bQ);}
+  for(let yr=0;yr<=10;yr+=2){const q=yr*4,x=xP(q);mk('text',{x,y:H-4,'text-anchor':'middle','font-family':'Jost,sans-serif','font-size':10,fill:'#5a5750'},svg).textContent=yr===0?'Старт':`${yr}л`;}
+  [[mn],[mx]].forEach(([v])=>{if(!isFinite(v)||Math.abs(v)<100)return;mk('text',{x:P.l-6,y:yP(v)+4,'text-anchor':'end','font-family':'Bebas Neue,sans-serif','font-size':11,fill:v>=0?'#27ae60':'#c0392b'},svg).textContent=fS(v);});
 }
 function updateKPI(lp,rp){
   const m=mdl(lp,rp),tc=m.tf+m.tvo+m.taxes;
@@ -284,7 +358,6 @@ function updateKPI(lp,rp){
   document.getElementById('k1').textContent=fM(tc);
   const e2=document.getElementById('k2');e2.textContent=(m.net>=0?'+':'')+fM(m.net);e2.style.color=m.net>=0?'#27ae60':'#e74c3c';
   document.getElementById('k3').textContent=m.baths+' / '+MAX_BATHS;
-  document.getElementById('k3s').textContent='из '+MAX_BATHS+' макс';
   const ke=document.getElementById('k5');ke.textContent=m.rv>0?(m.net/m.rv*100).toFixed(1)+'%':'—';ke.style.color=m.net>=0?'#27ae60':'#e74c3c';
 }
 function setp(id,v,mn,mx){document.getElementById(id).style.setProperty('--p',((v-mn)/(mx-mn)*100).toFixed(1)+'%');}
